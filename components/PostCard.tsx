@@ -119,10 +119,10 @@ export default function PostCard({ post, onUpdate }: { post: Post; onUpdate?: ()
 
             {/* Text */}
             <h3 className="text-white font-bold text-lg text-center mb-2">
-              Post Delete Karna Chahte Ho?
+              Delete Post?
             </h3>
             <p className="text-gray-400 text-sm text-center mb-6">
-              Yeh post permanently delete ho jayegi — undo nahi ho sakta!
+              This post will be permanently deleted and cannot be undone.
             </p>
 
             {/* Buttons */}
