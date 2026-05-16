@@ -10,7 +10,7 @@ export default async function MainLayout({ children }: { children: React.ReactNo
   return (
     <div className="min-h-screen bg-[#0f0f0f]">
       <Navbar />
-      <main className="max-w-2xl mx-auto px-4 py-6">{children}</main>
+      <main className="max-w-5xl mx-auto px-4 py-6">{children}</main>
     </div>
   );
 }
