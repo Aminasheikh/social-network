@@ -1,11 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
-import { writeFile, mkdir } from 'fs/promises';
-import path from 'path';
+import { supabase } from '@/lib/supabase';
 import { v4 as uuidv4 } from 'uuid';
-
-export const config = { api: { bodyParser: false } };
 
 export async function POST(req: NextRequest) {
   const session = await getServerSession(authOptions);
@@ -19,15 +16,19 @@ export async function POST(req: NextRequest) {
   if (!allowedTypes.includes(file.type))
     return NextResponse.json({ error: 'File type not allowed' }, { status: 400 });
 
-  const bytes = await file.arrayBuffer();
-  const buffer = Buffer.from(bytes);
   const ext = file.name.split('.').pop();
   const filename = `${uuidv4()}.${ext}`;
-  const uploadsDir = path.join(process.cwd(), 'public', 'uploads');
+  const bytes = await file.arrayBuffer();
+  const buffer = Buffer.from(bytes);
 
-  await mkdir(uploadsDir, { recursive: true });
-  await writeFile(path.join(uploadsDir, filename), buffer);
+  const { data, error } = await supabase.storage
+    .from('uploads')
+    .upload(filename, buffer, { contentType: file.type, upsert: false });
 
+  if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+
+  const { data: publicUrl } = supabase.storage.from('uploads').getPublicUrl(filename);
   const mediaType = file.type.startsWith('video') ? 'video' : 'image';
-  return NextResponse.json({ url: `/uploads/${filename}`, mediaType });
+
+  return NextResponse.json({ url: publicUrl.publicUrl, mediaType });
 }
