@@ -68,9 +68,9 @@ export default function ProfilePage() {
   return (
     <div className="space-y-4">
       {/* Cover + Avatar */}
-      <div className="bg-[#1a1a2e] border border-[#2a2a3e] rounded-2xl overflow-hidden">
+      <div className="bg-[#1a1a2e] border border-[#2a2a3e] rounded-2xl">
         {/* Cover */}
-        <div className="h-48 bg-gradient-to-r from-indigo-900 via-purple-900 to-pink-900 relative">
+        <div className="h-48 bg-gradient-to-r from-indigo-900 via-purple-900 to-pink-900 relative rounded-t-2xl overflow-hidden">
           {user.coverImage && (
             <Image src={user.coverImage} alt="cover" fill className="object-cover" />
           )}
@@ -79,9 +79,9 @@ export default function ProfilePage() {
 
         {/* Profile Info */}
         <div className="px-6 pb-5">
-          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 -mt-14 mb-4">
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-4" style={{ marginTop: '-3rem' }}>
             {/* Avatar */}
-            <div className="w-24 h-24 rounded-full border-4 border-[#1a1a2e] bg-indigo-600 flex items-center justify-center text-3xl font-bold text-white overflow-hidden shadow-xl">
+            <div className="w-24 h-24 rounded-full border-4 border-[#1a1a2e] bg-indigo-600 flex items-center justify-center text-3xl font-bold text-white overflow-hidden shadow-xl z-10 relative">
               {user.avatar
                 ? <Image src={user.avatar} alt={user.name} width={96} height={96} className="object-cover w-full h-full" />
                 : user.name[0].toUpperCase()}
