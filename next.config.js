@@ -3,6 +3,11 @@ const nextConfig = {
   images: {
     domains: ['localhost'],
   },
+  experimental: {
+    serverActions: {
+      bodySizeLimit: '10mb',
+    },
+  },
 };
 
 module.exports = nextConfig;

@@ -5,6 +5,8 @@ import { writeFile, mkdir } from 'fs/promises';
 import path from 'path';
 import { v4 as uuidv4 } from 'uuid';
 
+export const config = { api: { bodyParser: false } };
+
 export async function POST(req: NextRequest) {
   const session = await getServerSession(authOptions);
   if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
