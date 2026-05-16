@@ -1,7 +1,6 @@
 'use client';
 import { useState } from 'react';
 import { useSession } from 'next-auth/react';
-import Image from 'next/image';
 import Link from 'next/link';
 import { formatDistanceToNow } from 'date-fns';
 import { FiHeart, FiMessageCircle, FiLock, FiUsers, FiGlobe } from 'react-icons/fi';
@@ -30,9 +29,9 @@ export default function PostCard({ post, onUpdate }: { post: Post; onUpdate?: ()
     <div className="bg-[#1a1a2e] border border-[#2a2a3e] rounded-2xl p-4 space-y-3">
       <div className="flex items-center gap-3">
         <Link href={`/profile/${post.author.username}`}>
-          <div className="w-10 h-10 rounded-full bg-indigo-600 flex items-center justify-center font-bold text-white overflow-hidden">
+          <div className="w-10 h-10 rounded-full bg-indigo-600 flex items-center justify-center font-bold text-white overflow-hidden flex-shrink-0">
             {post.author.avatar
-              ? <Image src={post.author.avatar} alt={post.author.name} width={40} height={40} className="object-cover" />
+              ? <img src={post.author.avatar} alt={post.author.name} className="w-full h-full object-cover" />
               : post.author.name[0].toUpperCase()}
           </div>
         </Link>

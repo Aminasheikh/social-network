@@ -4,7 +4,6 @@ import { useSession } from 'next-auth/react';
 import { useSocket } from '@/components/SocketProvider';
 import CreatePost from '@/components/CreatePost';
 import PostCard from '@/components/PostCard';
-import Image from 'next/image';
 import Link from 'next/link';
 import { FiUserPlus, FiUsers } from 'react-icons/fi';
 import type { Post } from '@/types';
@@ -40,7 +39,7 @@ function Sidebar() {
           <div className="flex items-center gap-3">
             <div className="w-12 h-12 rounded-full bg-indigo-600 flex items-center justify-center text-white font-bold text-lg overflow-hidden">
               {session.user.avatar
-                ? <Image src={session.user.avatar} alt={session.user.name} width={48} height={48} className="object-cover" />
+                ? <img src={session.user.avatar} alt={session.user.name} className="w-full h-full object-cover" />
                 : session.user.name?.[0]}
             </div>
             <div>
@@ -63,7 +62,7 @@ function Sidebar() {
               <div key={r.id} className="flex items-center gap-2">
                 <div className="w-9 h-9 rounded-full bg-indigo-700 flex items-center justify-center text-white text-sm font-bold overflow-hidden flex-shrink-0">
                   {r.sender.avatar
-                    ? <Image src={r.sender.avatar} alt={r.sender.name} width={36} height={36} className="object-cover" />
+                    ? <img src={r.sender.avatar} alt={r.sender.name} className="w-full h-full object-cover" />
                     : r.sender.name[0]}
                 </div>
                 <div className="flex-1 min-w-0">
@@ -97,7 +96,7 @@ function Sidebar() {
                 className="flex items-center gap-2 hover:bg-[#2a2a3e] rounded-xl p-1.5 transition">
                 <div className="w-8 h-8 rounded-full bg-indigo-700 flex items-center justify-center text-white text-sm font-bold overflow-hidden flex-shrink-0">
                   {f.avatar
-                    ? <Image src={f.avatar} alt={f.name} width={32} height={32} className="object-cover" />
+                    ? <img src={f.avatar} alt={f.name} className="w-full h-full object-cover" />
                     : f.name[0]}
                 </div>
                 <div>

@@ -46,7 +46,7 @@ export default function CommentSection({ postId }: { postId: string }) {
             <Link href={`/profile/${c.author.username}`}>
               <div className="w-7 h-7 rounded-full bg-indigo-600 flex items-center justify-center text-xs font-bold text-white overflow-hidden flex-shrink-0">
                 {c.author.avatar
-                  ? <Image src={c.author.avatar} alt={c.author.name} width={28} height={28} className="object-cover" />
+                  ? <img src={c.author.avatar} alt={c.author.name} className="w-full h-full object-cover" />
                   : c.author.name[0]}
               </div>
             </Link>
