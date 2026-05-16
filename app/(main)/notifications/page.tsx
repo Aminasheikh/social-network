@@ -2,7 +2,6 @@
 import { useEffect, useState } from 'react';
 import { useSocket } from '@/components/SocketProvider';
 import { formatDistanceToNow } from 'date-fns';
-import Image from 'next/image';
 import Link from 'next/link';
 import { FiHeart, FiMessageCircle, FiUserPlus, FiUserCheck, FiBell } from 'react-icons/fi';
 import type { Notification } from '@/types';
@@ -55,7 +54,7 @@ export default function NotificationsPage() {
           <div key={n.id} className={`bg-[#1a1a2e] border rounded-xl p-4 flex items-start gap-3 ${!n.read ? 'border-indigo-800' : 'border-[#2a2a3e]'}`}>
             <div className="w-9 h-9 rounded-full bg-[#2a2a3e] flex items-center justify-center flex-shrink-0 overflow-hidden">
               {n.sender?.avatar
-                ? <Image src={n.sender.avatar} alt={n.sender.name} width={36} height={36} className="object-cover" />
+                ? <img src={n.sender.avatar} alt={n.sender.name} className="w-full h-full object-cover" />
                 : n.sender?.name?.[0] ?? '?'}
             </div>
             <div className="flex-1 min-w-0">

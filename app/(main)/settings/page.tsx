@@ -1,7 +1,6 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
 import { useSession } from 'next-auth/react';
-import Image from 'next/image';
 import { FiSettings, FiCamera, FiUser, FiLock, FiSave } from 'react-icons/fi';
 import toast from 'react-hot-toast';
 
@@ -63,7 +62,7 @@ export default function SettingsPage() {
           <div className="relative">
             <div className="w-20 h-20 rounded-full bg-indigo-600 flex items-center justify-center text-2xl font-bold text-white overflow-hidden">
               {form.avatar
-                ? <Image src={form.avatar} alt="avatar" width={80} height={80} className="object-cover" />
+                ? <img src={form.avatar} alt="avatar" className="w-full h-full object-cover" />
                 : form.name[0] || '?'}
             </div>
             <button type="button" onClick={() => avatarRef.current?.click()}

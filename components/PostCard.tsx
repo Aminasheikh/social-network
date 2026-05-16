@@ -52,7 +52,7 @@ export default function PostCard({ post, onUpdate }: { post: Post; onUpdate?: ()
         <div className="rounded-xl overflow-hidden">
           {post.mediaType === 'video'
             ? <video src={post.mediaUrl} controls className="w-full max-h-96 object-cover" />
-            : <Image src={post.mediaUrl} alt="media" width={600} height={400} className="w-full max-h-96 object-cover" />}
+            : <img src={post.mediaUrl!} alt="media" className="w-full max-h-96 object-cover" />}
         </div>
       )}
 

@@ -2,7 +2,6 @@
 import { useRef, useState } from 'react';
 import { useSession } from 'next-auth/react';
 import { FiImage, FiVideo, FiGlobe, FiUsers, FiLock, FiX } from 'react-icons/fi';
-import Image from 'next/image';
 import toast from 'react-hot-toast';
 
 export default function CreatePost({ onCreated }: { onCreated: () => void }) {
@@ -59,7 +58,7 @@ export default function CreatePost({ onCreated }: { onCreated: () => void }) {
           <div className="relative rounded-xl overflow-hidden">
             {media.type === 'video'
               ? <video src={media.url} className="w-full max-h-48 object-cover" />
-              : <Image src={media.url} alt="preview" width={600} height={300} className="w-full max-h-48 object-cover" />}
+              : <img src={media.url} alt="preview" className="w-full max-h-48 object-cover" />}
             <button type="button" onClick={() => setMedia(null)}
               className="absolute top-2 right-2 bg-black/50 rounded-full p-1 text-white hover:bg-black/80">
               <FiX />

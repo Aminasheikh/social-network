@@ -1,7 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
 import { useSession } from 'next-auth/react';
-import Image from 'next/image';
 import { useParams } from 'next/navigation';
 import { FiUserPlus, FiUserCheck, FiLock, FiCalendar, FiGrid, FiUsers, FiEdit2 } from 'react-icons/fi';
 import { format } from 'date-fns';
@@ -72,7 +71,7 @@ export default function ProfilePage() {
         {/* Cover */}
         <div className="h-48 bg-gradient-to-r from-indigo-900 via-purple-900 to-pink-900 relative rounded-t-2xl overflow-hidden">
           {user.coverImage && (
-            <Image src={user.coverImage} alt="cover" fill className="object-cover" />
+            <img src={user.coverImage} alt="cover" className="w-full h-full object-cover absolute inset-0" />
           )}
           <div className="absolute inset-0 bg-black/20" />
         </div>
@@ -83,7 +82,7 @@ export default function ProfilePage() {
             {/* Avatar */}
             <div className="w-24 h-24 rounded-full border-4 border-[#1a1a2e] bg-indigo-600 flex items-center justify-center text-3xl font-bold text-white overflow-hidden shadow-xl z-10 relative">
               {user.avatar
-                ? <Image src={user.avatar} alt={user.name} width={96} height={96} className="object-cover w-full h-full" />
+                ? <img src={user.avatar} alt={user.name} className="object-cover w-full h-full" />
                 : user.name[0].toUpperCase()}
             </div>
 
@@ -159,7 +158,7 @@ export default function ProfilePage() {
                     <Link key={f.id} href={`/profile/${f.username}`} className="group text-center">
                       <div className="w-full aspect-square rounded-xl bg-indigo-700 flex items-center justify-center text-white font-bold overflow-hidden mb-1 group-hover:ring-2 ring-indigo-500 transition">
                         {f.avatar
-                          ? <Image src={f.avatar} alt={f.name} width={64} height={64} className="object-cover w-full h-full" />
+                          ? <img src={f.avatar} alt={f.name} className="object-cover w-full h-full" />
                           : f.name[0]}
                       </div>
                       <p className="text-xs text-gray-400 truncate">{f.name.split(' ')[0]}</p>
@@ -207,7 +206,7 @@ export default function ProfilePage() {
                         className="flex items-center gap-3 p-3 rounded-xl bg-[#0f0f0f] hover:bg-[#2a2a3e] transition">
                         <div className="w-12 h-12 rounded-full bg-indigo-700 flex items-center justify-center text-white font-bold overflow-hidden flex-shrink-0">
                           {f.avatar
-                            ? <Image src={f.avatar} alt={f.name} width={48} height={48} className="object-cover w-full h-full" />
+                            ? <img src={f.avatar} alt={f.name} className="object-cover w-full h-full" />
                             : f.name[0]}
                         </div>
                         <div>
