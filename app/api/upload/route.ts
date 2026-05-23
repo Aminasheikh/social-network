@@ -2,7 +2,6 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 import { supabase } from '@/lib/supabase';
-import { v4 as uuidv4 } from 'uuid';
 
 export async function POST(req: NextRequest) {
   const session = await getServerSession(authOptions);
@@ -17,7 +16,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'File type not allowed' }, { status: 400 });
 
   const ext = file.name.split('.').pop();
-  const filename = `${uuidv4()}.${ext}`;
+  const filename = `${crypto.randomUUID()}.${ext}`;
   const bytes = await file.arrayBuffer();
   const buffer = Buffer.from(bytes);
 
